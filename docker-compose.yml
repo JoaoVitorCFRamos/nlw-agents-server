@@ -1,0 +1,22 @@
+# Vai definir quem são as dependencias/serviços da aplicação
+
+# pg-vector: imagem com suporte pra executar o pgvector que é uma extensão que vamos utilizar para fazer busca por similaridade (Pesquisa que não vai ver se o texto é igual mas o significado)
+# E pra isso utilizamos o conceito de vetores (representação semantica, convertida em números pequenos (embeddings))
+# Ex:
+# Cachorro => [1, 2] (1 = animal, 2=cachorro)
+# Gato => [1,3] (1 = animal, 3 = Gato)
+# Cão => [1, 2] (1= animal, 2 = cachorro)
+# O Vetor nesse caso vai ser uma representação do que a palavra quer dizer, não o que ela significa propriamente, construida por parâmetros
+# Ex: I.A. com 7B parâmetros (o parâmetros seriam os "números" dentro do vetor)
+
+services:
+  nlw-agents-pg:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: agents
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./docker/setup.sql:/docker-entrypoint-initdb.d/setup.sql
