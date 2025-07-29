@@ -8,6 +8,13 @@
       "when": 1752272856292,
       "tag": "0000_skinny_blackheart",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1752610522225,
+      "tag": "0001_secret_doctor_spectrum",
+      "breakpoints": true
     }
   ]
 }
